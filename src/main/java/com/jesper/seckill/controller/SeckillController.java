@@ -17,6 +17,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,7 +68,7 @@ public class SeckillController implements InitializingBean {
      * @param goodsId
      * @return
      */
-    @RequestMapping(value = "/do_seckill", method = RequestMethod.POST)
+    @PostMapping(value = "/do_seckill")
     @ResponseBody
     public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) {
 
@@ -127,7 +129,7 @@ public class SeckillController implements InitializingBean {
      * -1：秒杀失败
      * 0： 排队中
      */
-    @RequestMapping(value = "/result", method = RequestMethod.GET)
+    @GetMapping(value = "/result")
     @ResponseBody
     public Result<Long> seckillResult(Model model, User user,
                                       @RequestParam("goodsId") long goodsId) {
